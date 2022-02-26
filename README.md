@@ -1,10 +1,14 @@
-# useNft
+# useNft react hook example (view metadata)
 
 🍮 React hook to fetch metadata from any NFT. [GitHub](https://use-nft.spectre.xyz/)
 
-# MetaMask react example
+# MetaMask connect react example
 
 Connecting to MetaMask +React.js + Custom Hook + State Management. [GitHub](https://github.com/blakewood84/react-metamask-medium)
+
+# Mint react example
+
+Building a web3 frontend with React [dev.to](https://dev.to/rounakbanik/building-a-web3-frontend-with-react-340c)
 
 # Getting Started with Create React App
 
