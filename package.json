@@ -8,7 +8,10 @@
     "@testing-library/user-event": "^13.2.1",
     "@web3-react/core": "^6.1.9",
     "@web3-react/injected-connector": "^6.0.7",
-    "ethers": "^5.5.4",
+    "download-http": "^0.0.4",
+    "hardhat": "^2.8.4",
+    "jpeg-js": "^0.4.3",
+    "js-image-generator": "^1.0.3",
     "react": "^17.0.2",
     "react-bootstrap": "^2.1.2",
     "react-dom": "^17.0.2",
@@ -43,5 +46,16 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.5",
+    "@nomiclabs/hardhat-waffle": "^2.0.2",
+    "@openzeppelin/contracts": "^4.5.0",
+    "chai": "^4.3.6",
+    "cool-images": "^1.0.3",
+    "ethereum-waffle": "^3.4.0",
+    "ethers": "^5.5.4",
+    "@vitejs/plugin-react": "^1.0.7",
+    "vite": "^2.7.2"
   }
 }

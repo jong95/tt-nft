@@ -1,3 +1,7 @@
+# Hardhat
+npx hardhat compile
+npx hardhat run scripts/deploy-script.js --network mumbai
+
 # useNft react hook example (view metadata)
 
 🍮 React hook to fetch metadata from any NFT. [GitHub](https://use-nft.spectre.xyz/)
