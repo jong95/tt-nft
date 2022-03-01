@@ -8,6 +8,8 @@ const NftShow = ({ contractAddress, tokenId }) => {
 
   const { loading, error, nft } = useNft(contractAddress, tokenId);
 
+  if (!tokenId) return <>Set token Id</>;
+
   // nft.loading is true during load.
   if (loading) return <>Loading…</>;
 

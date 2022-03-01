@@ -7,7 +7,7 @@ import { useWeb3React } from '@web3-react/core';
 export const MetaMaskContext = React.createContext(null);
 
 export const MetaMaskProvider = ({ children }) => {
-  const { activate, account, library, connector, active, deactivate } =
+  const { activate, account, library, connector, active, deactivate, chainId } =
     useWeb3React();
 
   const [isActive, setIsActive] = useState(false);
@@ -58,12 +58,13 @@ export const MetaMaskProvider = ({ children }) => {
     () => ({
       isActive,
       account,
+      chainId,
       isLoading,
       connect,
       disconnect,
       shouldDisable,
     }),
-    [isActive, isLoading, shouldDisable, account],
+    [isActive, isLoading, shouldDisable, account, chainId],
   );
 
   return (
