@@ -1,0 +1,11 @@
+{
+    "name": "#3 NFT",
+    "description": "NFT description",
+    "image": "https://thirsteez-data.s3.ap-northeast-2.amazonaws.com/metadata/image/3.jpg",
+    "attributes": [
+        {
+            "number": 3,
+            "rarity": 0.5
+        }
+    ]
+}
