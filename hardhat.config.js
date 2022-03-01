@@ -20,6 +20,9 @@ const {
 module.exports = {
   solidity: '0.8.1',
   defaultNetwork: 'matic',
+  paths: {
+    artifacts: './src/artifacts',
+  },
   networks: {
     hardhat: {},
     rinkeby: {

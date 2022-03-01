@@ -23,7 +23,8 @@ const NftShow = ({ contractAddress, tokenId }) => {
     );
   }
 
-  // You can now display the NFT metadata.
+  const attributes = nft.rawData['attributes'];
+
   return (
     <section>
       <h1>{nft.name}</h1>
@@ -31,6 +32,16 @@ const NftShow = ({ contractAddress, tokenId }) => {
       <p>{nft.description}</p>
       <p>Owner: {nft.owner}</p>
       <p>Metadata URL: {nft.metadataUrl}</p>
+      <p>Attributes</p>
+      {attributes.map((attribute) =>
+        Object.keys(attribute).map((key, i) => (
+          <p key={i}>
+            <span>
+              {key} : {attribute[key]}
+            </span>
+          </p>
+        )),
+      )}
     </section>
   );
 };

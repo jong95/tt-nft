@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
-import contract from '../contracts/NFT.json';
+import contract from '../artifacts/contracts/NFT.sol/NFT.json';
 import { ethers } from 'ethers';
+import { connectAdvanced } from 'react-redux';
 
 const contractAddress = '0x6A544c126fFdE8E4e9cBF1A4Dfd0883C0639eb90';
 // const contractAddress = process.env['NFT_CONTRACT_ADDRESS'];
 const abi = contract.abi;
 
 function Mint() {
+  // console.log('contractAddress: ', contractAddress);
+  const mintPrice = ethers.utils.parseEther('0.001');
   const [currentAccount, setCurrentAccount] = useState(null);
 
   const checkWalletIsConnected = async () => {
@@ -56,18 +59,19 @@ function Mint() {
         const provider = new ethers.providers.Web3Provider(ethereum);
         const signer = provider.getSigner();
         const nftContract = new ethers.Contract(contractAddress, abi, signer);
-        const recipient = '0x1e60Cf7B8fB0B7EaD221CF8D0e7d19c863FfbE40';
+        const recipient = currentAccount;
 
         console.log('Initialize payment');
         let nftTxn = await nftContract.mintTo(recipient, {
-          value: ethers.utils.parseEther('0.001'),
+          value: mintPrice,
         });
 
         console.log('Minting... please wait');
         await nftTxn.wait();
 
         console.log(
-          `Minted, see transaction: https://rinkeby.etherscan.io/tx/${nftTxn.hash}`,
+          // `Minted, see transaction: https://rinkeby.etherscan.io/tx/${nftTxn.hash}`,
+          `Minted, see transaction: https://polygonscan.com/tx/${nftTxn.hash}`,
         );
       } else {
         console.log('Ethereum object does not exist');
