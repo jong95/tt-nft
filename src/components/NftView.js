@@ -15,20 +15,8 @@ const ethersConfig = {
   ),
 };
 
-const NftView = ({
-  getNftData,
-  onChangeContractAddressInput,
-  onChangeTokenIdInput,
-  contractAddress,
-  tokenId,
-  NftContractAddress,
-  NftTokenId,
-}) => {
+const NftView = ({ getNftData, contractAddress, tokenId }) => {
   const nftContractAddress = '0x6A544c126fFdE8E4e9cBF1A4Dfd0883C0639eb90';
-
-  const onChangeContractAddress = (e) =>
-    onChangeContractAddressInput(e.target.value);
-  const onChangeTokenId = (e) => onChangeTokenIdInput(e.target.value);
 
   // console.log('build Nft component');
   // console.log('NftContractAddress: ', NftContractAddress);
@@ -64,10 +52,7 @@ const NftView = ({
               </select>
             </Col>
             <Col>
-              <NftShow
-                contractAddress={NftContractAddress}
-                tokenId={NftTokenId}
-              />
+              <NftShow contractAddress={contractAddress} tokenId={tokenId} />
             </Col>
           </Row>
         </Container>

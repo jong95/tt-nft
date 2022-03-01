@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import contract from '../contracts/NFT.json';
 import { ethers } from 'ethers';
 
-const contractAddress = '0x2789eE502f55643Eb6a7431170Fb5d7B03A6CA5f';
+const contractAddress = '0x6A544c126fFdE8E4e9cBF1A4Dfd0883C0639eb90';
+// const contractAddress = process.env['NFT_CONTRACT_ADDRESS'];
 const abi = contract.abi;
 
 function Mint() {
@@ -55,7 +56,7 @@ function Mint() {
         const provider = new ethers.providers.Web3Provider(ethereum);
         const signer = provider.getSigner();
         const nftContract = new ethers.Contract(contractAddress, abi, signer);
-				const recipient = '0x1e60Cf7B8fB0B7EaD221CF8D0e7d19c863FfbE40';
+        const recipient = '0x1e60Cf7B8fB0B7EaD221CF8D0e7d19c863FfbE40';
 
         console.log('Initialize payment');
         let nftTxn = await nftContract.mintTo(recipient, {
