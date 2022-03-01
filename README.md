@@ -1,6 +1,18 @@
-# Hardhat
-npx hardhat compile
-npx hardhat run scripts/deploy-script.js --network mumbai
+# Execution Client Process
+
+npm install
+npx hardhat compile (compile NFT.sol)
+npx hardhat deploy (deploy NFT smart contract to matic network)
+npm start (open browser on http://localhost:3000)
+
+# Execution Server(for metadata) Process (If you neeed, instead of using AWS S3 directly)
+
+cd util
+node metadata-server.js
+
+# Chrome CORS Extension
+
+[CORS Extension](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf/related?hl=en)
 
 # useNft react hook example (view metadata)
 

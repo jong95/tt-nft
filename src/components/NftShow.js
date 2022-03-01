@@ -2,8 +2,8 @@ import React from 'react';
 import { useNft } from 'use-nft';
 
 const NftShow = ({ contractAddress, tokenId }) => {
-  // console.log('contractAddress: ', contractAddress);
-  // console.log('tokenId: ', tokenId);
+  console.log('contractAddress: ', contractAddress);
+  console.log('tokenId: ', tokenId);
 
   const { loading, error, nft } = useNft(
     // '0x2789eE502f55643Eb6a7431170Fb5d7B03A6CA5f',
@@ -16,8 +16,8 @@ const NftShow = ({ contractAddress, tokenId }) => {
   if (loading) return <>Loading…</>;
 
   // nft.error is an Error instance in case of error.
-  // console.log('error: ', error);
-  // console.log('nft: ', nft);
+  console.log('error: ', error);
+  console.log('nft: ', nft);
   if (error || !nft) return <>Error. (Maybe not yet minted.)</>;
 
   // You can now display the NFT metadata.
