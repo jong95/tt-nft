@@ -1,5 +1,5 @@
-const express = require('express');
 const alchemy = require('@alch/alchemy-web3');
+const express = require('express');
 const app = express();
 
 app.get('/ttnft/:id', (req, res) => {
