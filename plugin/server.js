@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.post('/replace', (req, res) => {
+app.post('/', (req, res) => {
   console.log('req.body: ', req.body);
   console.log('req.body.data: ', req.body.data);
   console.log('req.body.data[0]: ', req.body.data[0]);
