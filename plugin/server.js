@@ -5,9 +5,9 @@ const app = express();
 app.post('/', (req, res) => {
   console.log(
     'fetching metadata for a crypto coven NFT token id: ',
-    req.body.id,
+    req.body.tokenId,
   );
-  const tokenId = parseInt(req.body.id);
+  const tokenId = parseInt(req.body.tokenId);
   const contractAddress = '0x6A544c126fFdE8E4e9cBF1A4Dfd0883C0639eb90';
 
   // Using HTTPS
