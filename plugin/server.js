@@ -3,6 +3,10 @@ const express = require('express');
 const app = express();
 
 app.get('/ttnft/:id', (req, res) => {
+  console.log(
+    'fetching metadata for a crypto coven NFT token id: ',
+    req.params.id,
+  );
   const tokenId = parseInt(req.params.id);
   const contractAddress = '0x6A544c126fFdE8E4e9cBF1A4Dfd0883C0639eb90';
 
