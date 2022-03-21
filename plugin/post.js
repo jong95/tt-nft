@@ -5,11 +5,11 @@ const options = {
   method: 'POST',
   body: {
     thread: {
-      title: 'test1',
+      title: 'reference block test',
       content: [
         {
           type: 'text',
-          content: 'content',
+          content: 'test ttnft query',
         },
         {
           type: 'reference',

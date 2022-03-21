@@ -2,12 +2,12 @@ const alchemy = require('@alch/alchemy-web3');
 const express = require('express');
 const app = express();
 
-app.get('/ttnft/:id', (req, res) => {
+app.post('/', (req, res) => {
   console.log(
     'fetching metadata for a crypto coven NFT token id: ',
-    req.params.id,
+    req.body.id,
   );
-  const tokenId = parseInt(req.params.id);
+  const tokenId = parseInt(req.body.id);
   const contractAddress = '0x6A544c126fFdE8E4e9cBF1A4Dfd0883C0639eb90';
 
   // Using HTTPS
@@ -59,8 +59,8 @@ app.get('/ttnft/:id', (req, res) => {
   // }
   web3.alchemy
     .getNftMetadata({
-      contractAddress: contractAddress,
-      tokenId: tokenId,
+      contractAddress,
+      tokenId,
     })
     .then((response) => {
       let block;
