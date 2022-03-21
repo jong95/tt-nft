@@ -71,17 +71,43 @@ app.post('/', (req, res) => {
 
       if (response.error === undefined) {
         console.log('Found tokenId for NFT');
+        block = {
+          data: [
+            {
+              actionType: 'replace',
+              actionData: [
+                {
+                  blockId: 'UG9sbDpnRktXdGtpR3Q3eFBzZVE3OVlpRW4=',
+                  blocks: [
+                    {
+                      type: 'text',
+                      subType: 'caption',
+                      color: '#b1b1b1',
+                      content: 'NFT content',
+                      botId: 'B1PAE2EDV',
+                    },
+                    {
+                      type: 'image',
+                      src: response.metadata.image,
+                    },
+                  ],
+                  botId: 'B1PAE2EDV',
+                },
+              ],
+            },
+          ],
+        };
 
-        block = [
-          {
-            type: 'text',
-            content: 'content',
-          },
-          {
-            type: 'image',
-            src: response.metadata.image,
-          },
-        ];
+        // block = [
+        //   {
+        //     type: 'text',
+        //     content: 'content',
+        //   },
+        //   {
+        //     type: 'image',
+        //     src: response.metadata.image,
+        //   },
+        // ];
       } else {
         console.log('No tokenId for NFT');
 

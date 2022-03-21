@@ -5,7 +5,7 @@ const options = {
   method: 'POST',
   body: {
     thread: {
-      title: 'reference block test',
+      title: 'reference block test #1',
       content: [
         {
           type: 'text',
@@ -14,6 +14,8 @@ const options = {
         {
           type: 'reference',
           botId: 'B1PAE2EDV',
+          blockId: 'T3B0aW9uOjU3bmRNUmNUX2swQVVTc09CN19qYw==',
+          replaceId: 'options',
           params: {
             tokenId: 1,
           },
