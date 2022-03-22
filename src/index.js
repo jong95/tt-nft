@@ -10,6 +10,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import Web3 from 'web3';
 import { Web3ReactProvider } from '@web3-react/core';
 import { MetaMaskProvider } from './hooks/metamask';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 const store = createStore(rootReducer, composeWithDevTools());
 
@@ -21,9 +22,11 @@ ReactDOM.render(
   <React.StrictMode>
     <Web3ReactProvider getLibrary={getLibrary}>
       <MetaMaskProvider>
-        <Provider store={store}>
-          <App />
-        </Provider>
+        <Router>
+          <Provider store={store}>
+            <App />
+          </Provider>
+        </Router>
       </MetaMaskProvider>
     </Web3ReactProvider>
   </React.StrictMode>,
