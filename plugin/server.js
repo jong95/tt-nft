@@ -167,7 +167,7 @@ app.post('/replace', (req, res) => {
                       type: 'image',
                       src: image,
                     },
-                    attributeBlocks,
+                    ...attributeBlocks,
                   ],
                   botId: 'B1PAE2EDV',
                 },
