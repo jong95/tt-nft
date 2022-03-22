@@ -53,3 +53,8 @@ Building a web3 frontend with React [dev.to](https://dev.to/rounakbanik/building
 
 - Set AWS S3 CORS by JSON
 - [CORS Extension](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf/related?hl=en)
+
+## Moim Plugin
+
+- [Moim Plugin Document](https://vingle.atlassian.net/wiki/spaces/MP/pages/327188481/Moim+Plugins)
+- [Moim Plugin Vote Source Code](https://github.com/balmbees/moim-plugin-vote)

@@ -118,7 +118,7 @@ app.post('/replace', (req, res) => {
         const name = response.metadata.name;
         const description = response.metadata.description;
         const image = response.metadata.image;
-        // TODO: Show attributes.
+
         response.metadata.attributes.map((attribute) => {
           Object.keys(attribute).map((key, idx) => {
             console.log('key: ', key);
