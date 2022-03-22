@@ -110,7 +110,8 @@ app.post('/replace', (req, res) => {
       tokenId,
     })
     .then((response) => {
-      let block = [];
+      let block;
+      let attributeBlocks = [];
 
       if (response.error === undefined) {
         console.log('Found tokenId for NFT');
@@ -123,6 +124,20 @@ app.post('/replace', (req, res) => {
             console.log('key: ', key);
             console.log('attribute[key]: ', attribute[key]);
             console.log('idx: ', idx);
+            attributeBlocks.push({
+              type: 'text',
+              subType: 'h1',
+              color: '#b1b1b1',
+              content: key,
+              botId: 'B1PAE2EDV',
+            });
+            attributeBlocks.push({
+              type: 'text',
+              subType: 'h1',
+              color: '#b1b1b1',
+              content: attribute[key],
+              botId: 'B1PAE2EDV',
+            });
           });
         });
 
@@ -152,6 +167,7 @@ app.post('/replace', (req, res) => {
                       type: 'image',
                       src: image,
                     },
+                    attributeBlocks,
                   ],
                   botId: 'B1PAE2EDV',
                 },
