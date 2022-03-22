@@ -2,6 +2,9 @@ const alchemy = require('@alch/alchemy-web3');
 const express = require('express');
 const app = express();
 
+const botId = 'B1PAE2EDV';
+const contractAddress = '0x6A544c126fFdE8E4e9cBF1A4Dfd0883C0639eb90';
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -26,10 +29,10 @@ app.post('/home', (req, res) => {
                 subType: 'caption',
                 color: '#b1b1b1',
                 content: 'HOME',
-                botId: 'B1PAE2EDV',
+                botId,
               },
             ],
-            botId: 'B1PAE2EDV',
+            botId,
           },
         ],
       },
@@ -40,17 +43,19 @@ app.post('/home', (req, res) => {
 });
 
 app.post('/action', (req, res) => {
-  const replaceId = req.body.replaceId;
-  const blockId = req.body.data[0].blockId;
+  const actionId = req.body.actionId;
+  const blockId = req.body.data.blockId;
+  const tokenId = req.body.data.params.tokenId;
 
   console.log('call /action');
-  console.log('replaceId: ', replaceId);
+  console.log('actionId: ', actionId);
   console.log('blockId: ', blockId);
+  console.log('tokenId: ', tokenId);
 
   const block = {
     data: [
       {
-        actionType: 'replace',
+        actionType: 'new-window',
         actionData: [
           {
             blockId,
@@ -60,10 +65,10 @@ app.post('/action', (req, res) => {
                 subType: 'caption',
                 color: '#b1b1b1',
                 content: 'ACTION',
-                botId: 'B1PAE2EDV',
+                botId,
               },
             ],
-            botId: 'B1PAE2EDV',
+            botId,
           },
         ],
       },
@@ -77,7 +82,6 @@ app.post('/replace', (req, res) => {
   const replaceId = req.body.replaceId;
   const blockId = req.body.data[0].blockId;
   const tokenId = parseInt(req.body.data[0].params.tokenId);
-  const contractAddress = '0x6A544c126fFdE8E4e9cBF1A4Dfd0883C0639eb90';
 
   console.log('replaceId: ', replaceId);
   console.log('blockId: ', blockId);
@@ -181,8 +185,42 @@ app.post('/replace', (req, res) => {
         console.log('No tokenId for NFT');
 
         block = {
-          type: 'text',
-          content: 'Token does not exist',
+          data: [
+            {
+              actionType: 'replace',
+              actionData: [
+                {
+                  blockId,
+                  blocks: [
+                    {
+                      type: 'text',
+                      subType: 'h1',
+                      color: '#b1b1b1',
+                      content: 'Token does not exists',
+                      botId,
+                    },
+                    {
+                      actionId: 'mintNFT',
+                      botId,
+                      element: {
+                        type: 'flat',
+                        size: 'medium',
+                        style: 'primary',
+                        content: 'Mint',
+                        status: 'enabled',
+                      },
+                      params: {
+                        tokenId,
+                      },
+                      content: 'Mint NFT',
+                      type: 'button',
+                    },
+                  ],
+                  botId,
+                },
+              ],
+            },
+          ],
         };
       }
       console.log(response);
