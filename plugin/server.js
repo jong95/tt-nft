@@ -42,21 +42,9 @@ app.post('/action', (req, res) => {
     data: [
       {
         actionType: 'new-window',
-        actionData: [
-          {
-            blockId,
-            blocks: [
-              {
-                type: 'text',
-                subType: 'caption',
-                color: '#b1b1b1',
-                content: 'ACTION',
-                botId,
-              },
-            ],
-            botId,
-          },
-        ],
+        actionData: {
+          url: 'http://localhost:3000',
+        },
       },
     ],
   };
