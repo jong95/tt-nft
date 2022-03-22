@@ -37,13 +37,14 @@ app.post('/action', (req, res) => {
   console.log('actionId: ', actionId);
   console.log('blockId: ', blockId);
   console.log('tokenId: ', tokenId);
+  const url = 'http://localhost:3000/?tokenId=1';
 
   const block = {
     data: [
       {
         actionType: 'new-window',
         actionData: {
-          url: 'http://localhost:3000',
+          url: `http://localhost:3000/?tokenId=${tokenId}&blockId=${blockId}&actionId=${actionId}`,
         },
       },
     ],
