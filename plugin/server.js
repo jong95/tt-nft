@@ -30,14 +30,13 @@ app.post('/home', (req, res) => {
 
 app.post('/action', (req, res) => {
   const actionId = req.body.actionId;
-  const blockId = req.body.data.blockId;
+  const blockId = req.body.data.params.blockId;
   const tokenId = req.body.data.params.tokenId;
 
   console.log('call /action');
   console.log('actionId: ', actionId);
   console.log('blockId: ', blockId);
   console.log('tokenId: ', tokenId);
-  const url = 'http://localhost:3000/?tokenId=1';
 
   const block = {
     data: [
@@ -111,7 +110,8 @@ app.post('/replace', (req, res) => {
       tokenId,
     })
     .then((response) => {
-      let block = [];
+      let block;
+      let attributeBlocks = [];
 
       if (response.error === undefined) {
         console.log('Found tokenId for NFT');
@@ -120,7 +120,25 @@ app.post('/replace', (req, res) => {
         const image = response.metadata.image;
         // TODO: Show attributes.
         response.metadata.attributes.map((attribute) => {
-          console.log('attribute: ', attribute);
+          Object.keys(attribute).map((key, idx) => {
+            console.log('key: ', key);
+            console.log('attribute[key]: ', attribute[key]);
+            console.log('idx: ', idx);
+            attributeBlocks.push({
+              type: 'text',
+              subType: 'h1',
+              color: '#b1b1b1',
+              content: key,
+              botId: 'B1PAE2EDV',
+            });
+            attributeBlocks.push({
+              type: 'text',
+              subType: 'h1',
+              color: '#b1b1b1',
+              content: attribute[key],
+              botId: 'B1PAE2EDV',
+            });
+          });
         });
 
         block = {
@@ -149,6 +167,7 @@ app.post('/replace', (req, res) => {
                       type: 'image',
                       src: image,
                     },
+                    ...attributeBlocks,
                   ],
                   botId: 'B1PAE2EDV',
                 },
@@ -176,7 +195,6 @@ app.post('/replace', (req, res) => {
                     },
                     {
                       actionId: 'mintNFT',
-                      blockId: 'buttontest',
                       botId,
                       element: {
                         type: 'flat',
@@ -187,6 +205,7 @@ app.post('/replace', (req, res) => {
                       },
                       params: {
                         tokenId,
+                        blockId,
                       },
                       content: 'Mint NFT',
                       type: 'button',
