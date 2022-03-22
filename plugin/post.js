@@ -8,7 +8,7 @@ const options = {
   method: 'POST',
   body: {
     thread: {
-      title: 'reference block test #1',
+      title: 'reference block test #10',
       content: [
         {
           type: 'text',
@@ -20,7 +20,7 @@ const options = {
           blockId: 'T3B0aW9uOjU3bmRNUmNUX2swQVVTc09CN19qYw==',
           replaceId: 'options',
           params: {
-            tokenId: 1,
+            tokenId: 10,
           },
         },
       ],
