@@ -13,25 +13,16 @@ app.post('/home', (req, res) => {
   console.log('req.body: ', req.body);
 
   const block = {
-    data: [
-      {
-        actionType: 'replace',
-        actionData: [
-          {
-            blocks: [
-              {
-                type: 'text',
-                subType: 'caption',
-                color: '#b1b1b1',
-                content: 'HOME',
-                botId,
-              },
-            ],
-            botId,
-          },
-        ],
-      },
-    ],
+    data: {
+      blocks: [
+        {
+          type: 'text',
+          subType: 'caption',
+          color: '#b1b1b1',
+          content: 'HOME',
+        },
+      ],
+    },
   };
 
   res.send(block);
