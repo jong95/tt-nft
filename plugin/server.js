@@ -5,7 +5,75 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.post('/', (req, res) => {
+app.post('/home', (req, res) => {
+  const replaceId = req.body.replaceId;
+  const blockId = req.body.data[0].blockId;
+
+  console.log('call /home');
+  console.log('replaceId: ', replaceId);
+  console.log('blockId: ', blockId);
+
+  const block = {
+    data: [
+      {
+        actionType: 'replace',
+        actionData: [
+          {
+            blockId,
+            blocks: [
+              {
+                type: 'text',
+                subType: 'caption',
+                color: '#b1b1b1',
+                content: 'HOME',
+                botId: 'B1PAE2EDV',
+              },
+            ],
+            botId: 'B1PAE2EDV',
+          },
+        ],
+      },
+    ],
+  };
+
+  res.send(block);
+});
+
+app.post('/action', (req, res) => {
+  const replaceId = req.body.replaceId;
+  const blockId = req.body.data[0].blockId;
+
+  console.log('call /action');
+  console.log('replaceId: ', replaceId);
+  console.log('blockId: ', blockId);
+
+  const block = {
+    data: [
+      {
+        actionType: 'replace',
+        actionData: [
+          {
+            blockId,
+            blocks: [
+              {
+                type: 'text',
+                subType: 'caption',
+                color: '#b1b1b1',
+                content: 'ACTION',
+                botId: 'B1PAE2EDV',
+              },
+            ],
+            botId: 'B1PAE2EDV',
+          },
+        ],
+      },
+    ],
+  };
+
+  res.send(block);
+});
+
+app.post('/replace', (req, res) => {
   const replaceId = req.body.replaceId;
   const blockId = req.body.data[0].blockId;
   const tokenId = parseInt(req.body.data[0].params.tokenId);
