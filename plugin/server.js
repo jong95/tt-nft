@@ -119,7 +119,11 @@ app.post('/replace', (req, res) => {
         const image = response.metadata.image;
         // TODO: Show attributes.
         response.metadata.attributes.map((attribute) => {
-          console.log('attribute: ', attribute);
+          Object.keys(attribute).map((key, idx) => {
+            console.log('key: ', key);
+            console.log('attribute[key]: ', attribute[key]);
+            console.log('idx: ', idx);
+          });
         });
 
         block = {
