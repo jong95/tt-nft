@@ -132,7 +132,14 @@ app.post('/replace', (req, res) => {
       tokenId,
     })
     .then((response) => {
-      let block;
+      let block = [];
+      const name = response.metadata.name;
+      const description = response.metadata.description;
+      const image = response.metadata.image;
+      // TODO: Show attributes.
+      response.metadata.attributes.map((attribute) => {
+        console.log('attribute: ', attribute);
+      });
 
       if (response.error === undefined) {
         console.log('Found tokenId for NFT');
@@ -146,14 +153,21 @@ app.post('/replace', (req, res) => {
                   blocks: [
                     {
                       type: 'text',
-                      subType: 'caption',
+                      subType: 'h1',
                       color: '#b1b1b1',
-                      content: 'NFT content',
+                      content: name,
+                      botId: 'B1PAE2EDV',
+                    },
+                    {
+                      type: 'text',
+                      subType: 'h2',
+                      color: '#b1b1b1',
+                      content: description,
                       botId: 'B1PAE2EDV',
                     },
                     {
                       type: 'image',
-                      src: response.metadata.image,
+                      src: image,
                     },
                   ],
                   botId: 'B1PAE2EDV',
