@@ -8,8 +8,9 @@ const contractAddress = '0x6A544c126fFdE8E4e9cBF1A4Dfd0883C0639eb90';
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/home', (req, res) => {
+app.post('/home', (req, res) => {
   console.log('call /home');
+  console.log('req.body: ', req.body);
 
   const block = {
     data: [
