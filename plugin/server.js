@@ -6,24 +6,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.post('/', (req, res) => {
-  console.log('req.body: ', req.body);
-  console.log('req.body.data: ', req.body.data);
-  console.log('req.body.data[0]: ', req.body.data[0]);
-  console.log('req.body.data[0].params: ', req.body.data[0].params);
-  console.log(
-    'req.body.data[0].params.tokenId: ',
-    req.body.data[0].params.tokenId,
-  );
+  const replaceId = req.body.replaceId;
+  const blockId = req.body.data[0].blockId;
   const tokenId = parseInt(req.body.data[0].params.tokenId);
   const contractAddress = '0x6A544c126fFdE8E4e9cBF1A4Dfd0883C0639eb90';
 
-  // Using HTTPS
+  console.log('replaceId: ', replaceId);
+  console.log('blockId: ', blockId);
+  console.log('tokenId: ', tokenId);
+
   const web3 = alchemy.createAlchemyWeb3(
     'https://polygon-mainnet.g.alchemy.com/v2/5HELYofdzUhXvcGCDJdFzpmZNU0uV04n',
   );
-
-  // Fetch metadata for a particular NFT:
-  console.log('fetching metadata for a crypto coven NFT...');
 
   // Normal case response.
 
@@ -80,7 +74,7 @@ app.post('/', (req, res) => {
               actionType: 'replace',
               actionData: [
                 {
-                  blockId: 'UG9sbDpnRktXdGtpR3Q3eFBzZVE3OVlpRW4=',
+                  blockId,
                   blocks: [
                     {
                       type: 'text',
@@ -100,17 +94,6 @@ app.post('/', (req, res) => {
             },
           ],
         };
-
-        // block = [
-        //   {
-        //     type: 'text',
-        //     content: 'content',
-        //   },
-        //   {
-        //     type: 'image',
-        //     src: response.metadata.image,
-        //   },
-        // ];
       } else {
         console.log('No tokenId for NFT');
 
