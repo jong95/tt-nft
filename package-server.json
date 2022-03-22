@@ -9,12 +9,8 @@
 	"scripts": {
 		"start": "node plugin/server.js"
 	},
-	"dependencies": {
-		"@alch/alchemy-web3": "^1.2.5",
-		"crypto": "^1.0.1",
-		"express": "^4.17.3",
-		"request": "^2.88.2"
-	},
+	"dependencies": {},
+	"devDependencies": {},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/jong95/tt-nft"
