@@ -8,13 +8,8 @@ const contractAddress = '0x6A544c126fFdE8E4e9cBF1A4Dfd0883C0639eb90';
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.post('/home', (req, res) => {
-  const replaceId = req.body.replaceId;
-  const blockId = req.body.data[0].blockId;
-
+app.get('/home', (req, res) => {
   console.log('call /home');
-  console.log('replaceId: ', replaceId);
-  console.log('blockId: ', blockId);
 
   const block = {
     data: [
@@ -22,7 +17,6 @@ app.post('/home', (req, res) => {
         actionType: 'replace',
         actionData: [
           {
-            blockId,
             blocks: [
               {
                 type: 'text',
