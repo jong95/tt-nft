@@ -176,7 +176,7 @@ app.post('/replace', (req, res) => {
                     },
                     {
                       actionId: 'mintNFT',
-                      blockId: 'button',
+                      blockId: 'buttontest',
                       botId,
                       element: {
                         type: 'flat',
