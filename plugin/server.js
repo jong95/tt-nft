@@ -30,14 +30,13 @@ app.post('/home', (req, res) => {
 
 app.post('/action', (req, res) => {
   const actionId = req.body.actionId;
-  const blockId = req.body.data.blockId;
+  const blockId = req.body.data.params.blockId;
   const tokenId = req.body.data.params.tokenId;
 
   console.log('call /action');
   console.log('actionId: ', actionId);
   console.log('blockId: ', blockId);
   console.log('tokenId: ', tokenId);
-  const url = 'http://localhost:3000/?tokenId=1';
 
   const block = {
     data: [
