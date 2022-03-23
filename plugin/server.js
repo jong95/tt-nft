@@ -8,10 +8,8 @@ const contractAddress = '0x6A544c126fFdE8E4e9cBF1A4Dfd0883C0639eb90';
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Home end point for admin page.
 app.post('/home', (req, res) => {
-  // console.log('call /home');
-  // console.log('req.body: ', req.body);
-
   const block = {
     blocks: [
       {
@@ -26,15 +24,11 @@ app.post('/home', (req, res) => {
   res.send(block);
 });
 
+// Action end point for button or form.
 app.post('/action', (req, res) => {
   const actionId = req.body.actionId;
   const blockId = req.body.data.params.blockId;
   const tokenId = req.body.data.params.tokenId;
-
-  // console.log('call /action');
-  // console.log('actionId: ', actionId);
-  // console.log('blockId: ', blockId);
-  // console.log('tokenId: ', tokenId);
 
   const block = {
     data: [
@@ -50,14 +44,10 @@ app.post('/action', (req, res) => {
   res.send(block);
 });
 
+// Replace end point for reference block.
 app.post('/replace', (req, res) => {
-  // const replaceId = req.body.replaceId;
   const blockId = req.body.data[0].blockId;
   const tokenId = parseInt(req.body.data[0].params.tokenId);
-
-  // console.log('replaceId: ', replaceId);
-  // console.log('blockId: ', blockId);
-  // console.log('tokenId: ', tokenId);
 
   const web3 = alchemy.createAlchemyWeb3(
     'https://polygon-mainnet.g.alchemy.com/v2/5HELYofdzUhXvcGCDJdFzpmZNU0uV04n',
@@ -73,7 +63,7 @@ app.post('/replace', (req, res) => {
       let attributeBlocks = [];
 
       if (response.error === undefined) {
-        // console.log('Found tokenId for NFT');
+        // Found tokenId for NFT.
 
         const name = response.metadata.name;
         const description = response.metadata.description;
@@ -87,8 +77,8 @@ app.post('/replace', (req, res) => {
               type: 'text',
               content,
               botId: 'B1PAE2EDV',
-              subType: 'h1',
-              color: '#b1b1b1',
+              subType: 'h3',
+              color: '#000000',
             });
           });
         });
@@ -103,21 +93,28 @@ app.post('/replace', (req, res) => {
                   blocks: [
                     {
                       type: 'text',
-                      content: name,
+                      content: `name: ${name}`,
                       subType: 'h1',
-                      color: '#b1b1b1',
+                      color: '#000000',
                       botId,
                     },
                     {
                       type: 'text',
-                      content: description,
+                      content: `description: ${description}`,
                       subType: 'h2',
-                      color: '#b1b1b1',
+                      color: '#000000',
                       botId,
                     },
                     {
                       type: 'image',
                       src: image,
+                    },
+                    {
+                      type: 'text',
+                      content: 'Attributes',
+                      subType: 'h2',
+                      color: '#000000',
+                      botId,
                     },
                     ...attributeBlocks,
                   ],
@@ -128,7 +125,7 @@ app.post('/replace', (req, res) => {
           ],
         };
       } else {
-        // console.log('No tokenId for NFT');
+        // No tokenId for NFT.
 
         block = {
           data: [
@@ -140,9 +137,9 @@ app.post('/replace', (req, res) => {
                   blocks: [
                     {
                       type: 'text',
-                      content: 'Token does not exists',
+                      content: 'Token has not yet minted',
                       botId,
-                      subType: 'h1',
+                      subType: 'h2',
                       color: '#b1b1b1',
                     },
                     {
