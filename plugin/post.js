@@ -7,7 +7,7 @@ const botToken =
 const botId = 'B1PAE2EDV';
 const forumId = 'QZM66A00L';
 const moimDomain = 'https://vingle.network';
-const tokenId = 1;
+const tokenId = 10;
 
 const options = {
   uri: `${moimDomain}/api/forums/${forumId}/threads`,

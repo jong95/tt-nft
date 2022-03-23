@@ -1,0 +1,18 @@
+{
+  "name": "plugin",
+  "version": "1.0.0",
+  "description": "moim plugin",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@alch/alchemy-web3": "^1.3.0",
+    "crypto": "^1.0.1",
+    "express": "^4.17.3",
+    "request": "^2.88.2"
+  }
+}
