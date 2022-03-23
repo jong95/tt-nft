@@ -192,11 +192,11 @@ app.post('/replace', (req, res) => {
                       subType: 'h1',
                       color: '#b1b1b1',
                       content: 'Token does not exists',
-                      botId,
+                      botId: 'B1PAE2EDV',
                     },
                     {
                       actionId: 'mintNFT',
-                      botId,
+                      botId: 'B1PAE2EDV',
                       element: {
                         type: 'flat',
                         size: 'medium',
@@ -212,7 +212,7 @@ app.post('/replace', (req, res) => {
                       type: 'button',
                     },
                   ],
-                  botId,
+                  botId: 'B1PAE2EDV',
                 },
               ],
             },
