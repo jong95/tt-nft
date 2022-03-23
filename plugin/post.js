@@ -4,22 +4,27 @@ const request = require('request');
 const blockId = crypto.randomBytes(20).toString('hex');
 const botToken =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiQjFQQUUyRURWIiwicmVmZXJlbmNlVXNlciI6IlU5OEpWQVVCSSIsImdyb3VwIjoiRzBDVVdJUkNSRyIsImlhdCI6MTY0Nzg0MzcyM30.lowtsVN36jKCsZ5i3HT1kJrAWewllSpJGzZswtKFhRo';
-const tokenId = 5;
+const botId = 'B1PAE2EDV';
+const forumId = 'QZM66A00L';
+const moimDomain = 'https://vingle.network';
+const tokenId = 10;
 
 const options = {
-  uri: 'https://vingle.network/api/forums/QZM66A00L/threads',
+  uri: `${moimDomain}/api/forums/${forumId}/threads`,
   method: 'POST',
   body: {
     thread: {
-      title: `reference block test #${tokenId}`,
+      title: `TTNFT #${tokenId}`,
       content: [
         {
           type: 'text',
-          content: 'test ttnft query',
+          content: `TTNFT Metadata #${tokenId}`,
+          subType: 'h1',
+          color: '#b1b1b1',
         },
         {
           type: 'reference',
-          botId: 'B1PAE2EDV',
+          botId,
           blockId,
           replaceId: 'options',
           params: {
