@@ -13,16 +13,14 @@ app.post('/home', (req, res) => {
   console.log('req.body: ', req.body);
 
   const block = {
-    data: {
-      blocks: [
-        {
-          type: 'text',
-          subType: 'caption',
-          color: '#b1b1b1',
-          content: 'HOME',
-        },
-      ],
-    },
+    blocks: [
+      {
+        type: 'text',
+        subType: 'h1',
+        color: '#b1b1b1',
+        content: 'HOME TEST',
+      },
+    ],
   };
 
   res.send(block);
