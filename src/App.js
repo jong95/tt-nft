@@ -5,6 +5,8 @@ import { Button } from 'react-bootstrap';
 import useMetaMask from './hooks/metamask';
 import { useLocation } from 'react-router-dom';
 
+const newBlockId = Math.random() + '';
+
 function useQuery() {
   const { search } = useLocation();
 
@@ -17,7 +19,8 @@ function App() {
 
   const query = useQuery();
   const blockId = query.get('blockId');
-  console.log('tokenId: ', query.get('tokenId'));
+  const tokenId = query.get('tokenId');
+  console.log('tokenId: ', tokenId);
   console.log('blockId: ', blockId);
   console.log('actionId: ', query.get('actionId'));
 
@@ -36,11 +39,13 @@ function App() {
             blockId,
             blocks: [
               {
-                type: 'text',
-                subType: 'h1',
-                color: '#b1b1b1',
-                content: 'DONE',
+                type: 'reference',
+                replaceId: 'options',
                 botId: 'B1PAE2EDV',
+                blockId: newBlockId,
+                params: {
+                  tokenId,
+                },
               },
             ],
           },
