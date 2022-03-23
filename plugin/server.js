@@ -43,7 +43,6 @@ app.post('/action', (req, res) => {
       {
         actionType: 'new-window',
         actionData: {
-          blockId,
           url: `http://localhost:3000/?tokenId=${tokenId}&blockId=${blockId}&actionId=${actionId}`,
         },
       },
