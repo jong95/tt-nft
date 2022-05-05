@@ -12,14 +12,17 @@ const {
   ALCHEMY_KEY,
   ALCHEMY_KEY_RINKEBY,
   ALCHEMY_KEY_POLYGON,
+  ALCHEMY_KEY_MUMBAI,
   ACCOUNT_PRIVATE_KEY,
   ETHERSCAN_API_KEY,
   POLYGONSCAN_API_KEY,
+  NETWORK,
 } = process.env;
 
+// https://docs.polygon.technology/docs/develop/network-details/network/
 module.exports = {
   solidity: '0.8.1',
-  defaultNetwork: 'matic',
+  defaultNetwork: NETWORK,
   paths: {
     artifacts: './src/artifacts',
   },
@@ -34,9 +37,11 @@ module.exports = {
       accounts: [`0x${ACCOUNT_PRIVATE_KEY}`],
     },
     matic: {
-      // url: `https://polygon-mainnet.g.alchemy.com/v2/${ALCHEMY_KEY_POLYGON}`,
-      // accounts: [`0x${ACCOUNT_PRIVATE_KEY}`],
       url: 'https://polygon-rpc.com',
+      accounts: [ACCOUNT_PRIVATE_KEY],
+    },
+    maticmum: {
+      url: `https://polygon-mumbai.g.alchemy.com/v2/${ALCHEMY_KEY_MUMBAI}`,
       accounts: [ACCOUNT_PRIVATE_KEY],
     },
     ethereum: {
