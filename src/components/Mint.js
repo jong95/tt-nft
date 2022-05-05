@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
 import contract from '../artifacts/contracts/NFT.sol/NFT.json';
 import { ethers } from 'ethers';
-import { connectAdvanced } from 'react-redux';
 
-const contractAddress = '0x6A544c126fFdE8E4e9cBF1A4Dfd0883C0639eb90';
-// const contractAddress = process.env['NFT_CONTRACT_ADDRESS'];
 const abi = contract.abi;
 
 function Mint() {
+  const contractAddress = '0x6A544c126fFdE8E4e9cBF1A4Dfd0883C0639eb90';
   // console.log('contractAddress: ', contractAddress);
   const mintPrice = ethers.utils.parseEther('0.001');
   const [currentAccount, setCurrentAccount] = useState(null);

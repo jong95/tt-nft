@@ -36,6 +36,25 @@ contract NFT is ERC721, PullPayment, Ownable {
     return newItemId;
   }
 
+  function mintToCount(address recipient, uint256 count)
+    public
+    payable
+    returns (uint256)
+  {
+    uint256 tokenId = currentTokenId.current();
+    require(tokenId + count < TOTAL_SUPPLY, 'Max supply reached');
+
+    uint256 newItemId;
+
+    for (uint256 i = 0; i < count; i++) {
+      currentTokenId.increment();
+      newItemId = currentTokenId.current();
+      _safeMint(recipient, newItemId);
+    }
+
+    return newItemId;
+  }
+
   /// @dev Returns an URI for a given token ID
   function _baseURI() internal view virtual override returns (string memory) {
     return baseTokenURI;

@@ -9,18 +9,13 @@ const ethersConfig = {
   //   alchemy: 'aPaDbb6ZM5j14sr3tKo4m4B3VlCCeN4u',
   // }),
 
-  provider: new providers.AlchemyProvider(
-    'matic',
-    process.env['ACCOUNT_PRIVATE_KEY'],
-  ),
+  provider: new providers.AlchemyProvider('matic'),
 };
 
 const NftView = ({ getNftData, contractAddress, tokenId }) => {
   const nftContractAddress = '0x6A544c126fFdE8E4e9cBF1A4Dfd0883C0639eb90';
 
-  // console.log('build Nft component');
-  // console.log('NftContractAddress: ', NftContractAddress);
-  // console.log('NftTokenId: ', NftTokenId);
+  console.log('nftContractAddress: ', nftContractAddress);
   const tokenIdOptions = [];
   for (let i = 1; i < 11; ++i) tokenIdOptions.push(i);
   const [selectedOption, setSelectedOption] = useState(tokenIdOptions[0].value);

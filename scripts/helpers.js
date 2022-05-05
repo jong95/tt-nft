@@ -1,5 +1,5 @@
-const { ethers } = require("ethers");
-const { getContractAt } = require("@nomiclabs/hardhat-ethers/internal/helpers");
+const { ethers } = require('ethers');
+const { getContractAt } = require('@nomiclabs/hardhat-ethers/internal/helpers');
 
 // Helper method for fetching environment variables from .env
 function getEnvVariable(key, defaultValue) {
@@ -19,16 +19,16 @@ function getProvider() {
   // });
 
   return new ethers.providers.AlchemyProvider(
-    getEnvVariable("NETWORK", "matic"),
-    getEnvVariable("ALCHEMY_KEY_POLYGON")
+    getEnvVariable('NETWORK'),
+    getEnvVariable('ALCHEMY_KEY'),
   );
 }
 
 // Helper method for fetching a wallet account using an environment variable for the PK
 function getAccount() {
   return new ethers.Wallet(
-    getEnvVariable("ACCOUNT_PRIVATE_KEY"),
-    getProvider()
+    getEnvVariable('ACCOUNT_PRIVATE_KEY'),
+    getProvider(),
   );
 }
 
@@ -38,8 +38,8 @@ function getContract(contractName, hre) {
   return getContractAt(
     hre,
     contractName,
-    getEnvVariable("NFT_CONTRACT_ADDRESS"),
-    account
+    getEnvVariable('NFT_CONTRACT_ADDRESS'),
+    account,
   );
 }
 
